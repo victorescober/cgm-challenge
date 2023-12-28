@@ -27,7 +27,7 @@ public class QuestionApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Welcome to the Command Line Spring Boot Application!");
+		System.out.println("Welcome to the Command Line Spring Boot Application, please type a question: ");
 		if (args[0].equals("console")) {
 			Scanner scanner = new Scanner(System.in);
 
@@ -43,7 +43,7 @@ public class QuestionApplication implements CommandLineRunner {
 				while (!questionText.contains("?")) {
 					System.out.println("Format Incorrect, Please try again");
 					questionText = scanner.nextLine();
-
+					
 					if (questionText.equalsIgnoreCase("-1")) {
 						break;
 					}
@@ -56,7 +56,7 @@ public class QuestionApplication implements CommandLineRunner {
 					Question foundQuestion = service.findByQuestion(utils.getOnlyQuestionString(questionText));
 					if (foundQuestion == null) {
 						System.out.println(
-								"the answer to life, universe and everything is 42, according to “The hitchhikers guide to the Galaxy");
+								"the answer to life, universe and everything is 42, according to \"The hitchhikers guide to the Galaxy\"");
 					} else {
 						for (QuestionAnswer questionAnswer : foundQuestion.getAnswers()) {
 							System.out.println("* " + questionAnswer.getAnswer());
