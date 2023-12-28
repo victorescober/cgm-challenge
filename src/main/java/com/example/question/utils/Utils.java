@@ -12,8 +12,10 @@ public class Utils {
         return question.substring(0, question.lastIndexOf("?"));
     }
 
-    public String[] getOnlyAnswers(String question) {
-        return question.substring(question.lastIndexOf("?") + 1, question.length()).split(" ");
+    public List<String> getOnlyAnswers(String question) {
+        List<String> result = Arrays
+                .asList(question.substring(question.lastIndexOf("?") + 1, question.length()).split("\""));
+        return result.stream().filter(i -> i.trim().length() >= 1).toList();
     }
 
     public boolean isOnlyQuestion(String questionText) {

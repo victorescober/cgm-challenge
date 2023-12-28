@@ -38,13 +38,15 @@ public class QuestionService {
         Question t = new Question();
         List<QuestionAnswer> answers = new ArrayList<>();
 
-        List<String> answersFromQuestion = List.of(utils.getOnlyAnswers(question));
+        List<String> answersFromQuestion = utils.getOnlyAnswers(question);
 
+        // saving all the answers of the question
         for (String answerQuestion : answersFromQuestion) {
             QuestionAnswer answer = new QuestionAnswer();
             answer.setQuestion(t);
-            answer.setAnswer(answerQuestion.replace("\"", ""));
+            answer.setAnswer(answerQuestion);
             answers.add(answer);
+
         }
 
         t.setQuestion(utils.getOnlyQuestionString(question));

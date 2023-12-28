@@ -40,7 +40,7 @@ public class QuestionApplication implements CommandLineRunner {
 					System.out.println("Format Incorrect, Please try again");
 					questionText = scanner.nextLine();
 				}
-				//length max 255	
+				
 				while (utils.isInvalidLength(utils.getOnlyQuestionString(questionText))) {
 					System.out.println("Question Length Incorrect, Please try again");
 					questionText = scanner.nextLine();
@@ -63,11 +63,8 @@ public class QuestionApplication implements CommandLineRunner {
 						for (QuestionAnswer questionAnswer : foundQuestion.getAnswers()) {
 							System.out.println("* " + questionAnswer.getAnswer());
 						}
-
 					}
-
 				}
-
 			}
 
 		}
