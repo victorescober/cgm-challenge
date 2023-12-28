@@ -1,7 +1,6 @@
 package com.example.question;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,13 +17,13 @@ public class QuestionUnitTesting {
 
     @Test
     public void getOnlyQuestion() {
-        assertEquals(utils.getOnlyQuestionString("what is your favorite food?\"a\" \"b\" "),
-                "what is your favorite food");
+        assertEquals(utils.getOnlyQuestionString("What is Peters favorite food?\"Pizza\" \"Spaguetti\" \"Ice Cream\""),
+                "What is Peters favorite food");
     }
 
     @Test
     public void getOnlyAnswers() {
-        assertEquals(List.of(utils.getOnlyAnswers("what is your favorite food?\"a\" \"b\" ")).size(), 2);
+        assertEquals(utils.getOnlyAnswers("what is your favorite food?\"Pizza\" \"Spaguetti\" \"Ice Cream\"").size(), 3);
     }
 
     @Test
@@ -42,7 +41,7 @@ public class QuestionUnitTesting {
     @Test
     public void isInvalidQuestionLength() {
         assertEquals(utils.isInvalidLength(
-                "question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, "),
+                "question invalid more than 255 characters, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, "),
                 true);
     }
 }

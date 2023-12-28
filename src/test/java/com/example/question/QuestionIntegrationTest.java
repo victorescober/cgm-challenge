@@ -19,14 +19,14 @@ public class QuestionIntegrationTest {
 
 	@BeforeEach
 	public void addQuestion() {
-		service.save("test1?\"a\" \"b\" \"c\" \"d\" \"e\"");
-		service.save("test2?\"a\" \"b\"");
+		service.save("What is Peters favorite food?\"Pizza\" \"Spaguetti\" \"Ice cream");
+		service.save("What is Autos's color?\"red\" \"blue\"");
 	}
 
 	@AfterEach
 	public void removeQuestion() {
-		service.deleteQuestion("test1");
-		service.deleteQuestion("test2");
+		service.deleteQuestion("What is Peters favorite food");
+		service.deleteQuestion("What is Autos's color");
 	}
 
 	@Test
@@ -35,8 +35,8 @@ public class QuestionIntegrationTest {
 	}
 
 	@Test
-	public void getAnswers() {
-		assertEquals(service.findByQuestion("test1").getAnswers().size(), 5);
+	public void getFirstQuestionAnswers() {
+		assertEquals(service.findByQuestion("What is Peters favorite food").getAnswers().size(), 3);
 	}
 
 }
