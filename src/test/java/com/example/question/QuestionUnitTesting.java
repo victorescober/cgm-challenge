@@ -23,7 +23,8 @@ public class QuestionUnitTesting {
 
     @Test
     public void getOnlyAnswers() {
-        assertEquals(utils.getOnlyAnswers("what is your favorite food?\"Pizza\" \"Spaguetti\" \"Ice Cream\"").size(), 3);
+        assertEquals(utils.getOnlyAnswers("what is your favorite food?\"Pizza\" \"Spaguetti\" \"Ice Cream\"").size(),
+                3);
     }
 
     @Test
@@ -39,9 +40,16 @@ public class QuestionUnitTesting {
     }
 
     @Test
+    public void isInvalidAnswerLength() {
+        assertEquals(utils.isAnswerInvalidLength(
+                "what is your favorite food?\"testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters\""),
+                true);
+    }
+
+    @Test
     public void isInvalidQuestionLength() {
         assertEquals(utils.isInvalidLength(
-                "question invalid more than 255 characters, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, question invalid, "),
+                "testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters, testing more the 255 Characters"),
                 true);
     }
 }

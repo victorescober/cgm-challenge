@@ -13,9 +13,9 @@ public class Utils {
     }
 
     public List<String> getOnlyAnswers(String question) {
-        List<String> result = Arrays
+        List<String> answers = Arrays
                 .asList(question.substring(question.lastIndexOf("?") + 1, question.length()).split("\""));
-        return result.stream().filter(i -> i.trim().length() >= 1).toList();
+        return answers.stream().filter(i -> i.trim().length() >= 1).toList();
     }
 
     public boolean isOnlyQuestion(String questionText) {
@@ -32,9 +32,10 @@ public class Utils {
 
     public boolean isAnswerInvalidLength(String question) {
         List<String> answers = Arrays
-                .asList((question.substring(question.lastIndexOf("?") + 1, question.length()).split(" ")));
+                .asList(question.substring(question.lastIndexOf("?") + 1, question.length()).split("\""))
+                .stream().filter(i -> i.trim().length() >= 1).toList();
         for (String answer : answers) {
-            if (isInvalidLength((answer.replace("\"", "")))) {
+            if (isInvalidLength((answer))) {
                 return true;
             }
         }
