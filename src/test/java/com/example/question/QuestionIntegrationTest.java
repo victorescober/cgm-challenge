@@ -30,7 +30,7 @@ public class QuestionIntegrationTest {
 	}
 
 	@Test
-	public void getAllQuestion() {
+	public void getAllQuestions() {
 		assertEquals(service.findAll().size(), 2);
 	}
 
