@@ -36,13 +36,23 @@ public class QuestionApplication implements CommandLineRunner {
 			while (true) {
 				questionText = scanner.nextLine();
 
-				while (!questionText.contains("?")) {
+				while (utils.isInvalidQuestion(questionText)) {
 					System.out.println("Format Incorrect, Please try again");
 					questionText = scanner.nextLine();
 				}
+				//length max 255	
+				while (utils.isInvalidLength(utils.getOnlyQuestionString(questionText))) {
+					System.out.println("Question Length Incorrect, Please try again");
+					questionText = scanner.nextLine();
+				}
 
+				while (utils.isAnswerInvalidLength(questionText)) {
+					System.out.println("Answer Length Incorrect, Please try again");
+					questionText = scanner.nextLine();
+				}
+
+				//asking if the text contains only the question.
 				if (utils.isOnlyQuestion(questionText)) {
-					// saving the question
 					service.save(questionText);
 				} else {
 					Question foundQuestion = service.findByQuestion(utils.getOnlyQuestionString(questionText));
