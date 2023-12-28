@@ -36,17 +36,9 @@ public class QuestionApplication implements CommandLineRunner {
 			while (true) {
 				questionText = scanner.nextLine();
 
-				if (questionText.equalsIgnoreCase("-1")) {
-					break;
-				}
-
 				while (!questionText.contains("?")) {
 					System.out.println("Format Incorrect, Please try again");
 					questionText = scanner.nextLine();
-					
-					if (questionText.equalsIgnoreCase("-1")) {
-						break;
-					}
 				}
 
 				if (utils.isOnlyQuestion(questionText)) {
